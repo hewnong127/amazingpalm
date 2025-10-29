@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>โปรแกรมคำนวณจำนวนหลุมปลูกปาล์มน้ำมัน</title>
+<style>
+  body {
+    font-family: "TH Sarabun New", sans-serif;
+    background: linear-gradient(to bottom right, #e1f7e7, #b3e5fc);
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+  }
+  h1 {
+    color: #2e7d32;
+    font-size: 32px;
+  }
+  .container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  label {
+    font-size: 22px;
+  }
+  input {
+    margin: 8px;
+    padding: 8px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #43a047;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #2e7d32;
+  }
+  h2 {
+    margin-top: 20px;
+    color: #0d47a1;
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 18px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🪴 โปรแกรมคำนวณจำนวนหลุมปลูกปาล์มน้ำมัน</h1>
+  <p>ใส่ค่าความกว้าง (a) และความยาว (b) ของพื้นที่รูปสี่เหลี่ยมมุมฉาก<br>แล้วกดปุ่มเพื่อคำนวณจำนวนหลุมปลูก</p>
+
+  <label>ความกว้าง (a): </label>
+  <input type="number" id="a" min="1" placeholder="เช่น 3"><br>
+
+  <label>ความยาว (b): </label>
+  <input type="number" id="b" min="1" placeholder="เช่น 5"><br>
+
+  <button onclick="calculate()">คำนวณ</button>
+
+  <h2>ผลลัพธ์: <span id="result">-</span> หลุม</h2>
+</div>
+
+<footer>
+  <p>โครงงานวิทยาศาสตร์: การศึกษาเปรียบเทียบรูปแบบการจัดวางหลุมปลูกปาล์มน้ำมัน<br>
+  โรงเรียนองค์การบริหารส่วนจังหวัดกระบี่ | ปีการศึกษา 2568</p>
+</footer>
+
+<script>
+function ceil(x){ return Math.ceil(x); }
+function floor(x){ return Math.floor(x); }
+
+function calculate() {
+  let a = Number(document.getElementById('a').value);
+  let b = Number(document.getElementById('b').value);
+
+  if (!a || !b || a <= 0 || b <= 0) {
+    document.getElementById('result').innerText = "กรุณาใส่ค่าความกว้างและความยาวที่ถูกต้อง";
+    return;
+  }
+
+  let result = 12*b*ceil(a/2) + 9*b*floor(a/2) + 2*a;
+  document.getElementById('result').innerText = result.toLocaleString();
+}
+</script>
+
+</body>
+</html>
